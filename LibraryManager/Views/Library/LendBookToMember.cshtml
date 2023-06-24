@@ -1,0 +1,54 @@
+﻿@model Dictionary<string,string>
+@{
+    string ISBN = Model["ISBN"];
+    string nationalCode = Model["nationalCode"];
+}
+
+<style type="text/css">
+    form{margin-right:35%;margin-top:2%}
+    #lcl{text-align:left}
+    #rcl{text-align:right;color:red;font-size:medium}
+    #btn{width:80px}
+    #msg{margin:1px}
+</style>
+
+<span id="msg">@ViewBag.lendingMessage</span>
+
+<form asp-action="LendBookToMember" method="post">
+    <table>
+        <tr>
+            <td id="lcl">
+                <label >شابک کتاب : </label>
+            </td>
+            <td>
+                <input name="ISBN" value="@ISBN"/>
+            </td>
+            <td id="rcl">
+                <span>@ViewBag.wrongBook</span>
+            </td>
+        </tr>
+        <tr>
+            <td id="lcl">
+                <label>کد ملی تحویل گیرنده : </label>
+            </td>
+            <td>
+                <input name="nationalCode" value="@nationalCode"/>
+            </td>
+            <td id="rcl">
+                <span>@ViewBag.wrongMember</span>
+            </td>
+        </tr>
+        <tr>
+            <td id="lcl" colspan="2">
+                <button id="btn" type="submit" class="btn btn-sm btn-success">واگذاری</button>
+                <input id="lstbtn" class="btn btn-sm btn-danger"  type="button" value="لیست کتاب ها" onclick="location.href='@Url.Action("PrintBooks", "Book")'" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:left">                
+                <input id="btn" class="btn btn-sm btn-primary"  type="button" value="لیست اعضا" onclick="location.href='@Url.Action("PrintMembers", "Member")'" />
+                <input id="btn" class="btn btn-dark btn-sm" type="button" value="منوی اصلی" onclick="location.href='@Url.Action("Index", "Library")'" />
+            </td>
+        </tr>
+    </table>   
+</form>

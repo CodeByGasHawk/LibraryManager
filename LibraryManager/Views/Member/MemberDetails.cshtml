@@ -1,0 +1,103 @@
+﻿@model Member;
+@{
+    Model.BorrowedBooksHistory.Reverse();
+    var borrowedBooks = Model.BorrowedBooksHistory;
+    int i = 1;
+}
+<style>
+    #rdonly{background-color:#F5F5F5}
+    #fields{margin-top:2%}
+    form{margin-top:10px}
+    form label{font-weight:bold;color:darkblue}
+    #updatemsg{margin:1px;color:forestgreen}
+    #btn {margin-top:1%;width:140px;font-size:16px;}
+    .btn-outline-danger , .btn-outline-primary{font-weight:bold}
+    table{margin-top:5%;width:90%;text-align:right;margin-left:auto;margin-right:auto}
+    thead{color:red;border-bottom:solid;border-color:darkblue}
+    tr{border-bottom-width:thin}
+    #histrow{color:gray;border:none}
+    #edt{background-color:cornflowerblue;width:55px;height:30px}
+    #deletebtn{width:55px;height:30px;background-color:indianred}
+    #lndmsg{margin:1px}
+    #emptymsg{color:gray;font-weight:bold}
+</style>
+
+<span id="updatemsg">@TempData["UpdateMemberMessage"]</span>
+
+<div id="fields">
+    <label>نام : </label>
+    <input id="rdonly" readonly value="@Model.FirstName"/>
+    <label>نام خانوادگی : </label>
+    <input id="rdonly" readonly value="@Model.LastName" />
+    <label>کدملی : </label>
+    <input id="rdonly" readonly value="@Model.NationalCode" />
+    <input id="edt" type="button" value="تغییر" onclick="location.href='@Url.Action("UpdateMember","Member",new {id = Model.Id})'">
+    <input id="deletebtn" class="btn btn-sm btn-success" type="button" value="حذف" onclick="location.href='@Url.Action("DeleteMember","Member",new {id = Model.Id})'" />
+</div>
+<div>
+    <input id="btn" class="btn btn-outline-danger btn-sm" type="button" value="افزودن کتاب" onclick="location.href='@Url.Action("AddBook", "Book")'" />
+    <input id="btn" class="btn btn-outline-primary btn-sm" type="button" value="افزودن عضو" onclick="location.href='@Url.Action("AddMember", "Member")'" />
+    <input id="btn" class="btn btn-danger btn-sm" value="لیست کتاب ها" onclick="location.href='@Url.Action("PrintBooks", "Book")'" />
+    <input id="btn" class="btn btn-primary btn-sm" value="لیست اعضا" onclick="location.href='@Url.Action("PrintMembers", "Member")'" />
+    <input id="btn" class="btn btn-dark btn-sm" type="button" value="منوی اصلی" onclick="location.href='@Url.Action("Index", "Library")'" />
+</div>
+
+<form asp-controller="Library" asp-action="LendBookToMemberFromProfile" asp-route-memberId="@Model.Id" method="post">
+    <label>واگذاری کتاب : </label>
+    <input placeholder="شابک را وارد کنید" name="ISBN" />
+    <button type="submit" class="btn btn-success btn-sm">تایید</button>
+</form>
+
+<span id="lndmsg">@TempData["LendingMessage"]</span>
+
+<table>
+    <colgroup>
+        <col span="1" style="width:7%"  />
+        <col span="1" style="width:25%" />
+        <col span="1" style="width:20%" />
+        <col span="1" style="width:12%" />
+        <col span="1" style="width:15%" />
+        <col span="1" style="width:15%" />        
+    </colgroup>
+    <thead>
+        <tr id="histrow">
+           <th colspan="2" style="">تاریخچه دریافت کتاب :</th>
+        </tr>
+        <tr>
+            <th>ردیف</th>
+            <th>عنوان کتاب</th>
+            <th>نویسنده</th>
+            <th>تاریخ دریافت</th>
+            <th>تاریخ تحویل</th>
+            <th>وضعیت</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in borrowedBooks)
+        {
+            <tr>
+                @{<td>@i</td>; i++;}
+                <td>@record.BorrowedBook.Title</td>
+                <td>@record.BorrowedBook.Author</td>
+                <td>@DateOnly.FromDateTime(record.TakeDate)</td>
+                <td>@DateOnly.FromDateTime(record.ReturnDate)</td>
+                @{
+                    string color = record.Status == "تحویل شده" ? "limegreen" : "red";
+                    <td style="color:@color">@record.Status</td>
+                 }
+                @{
+                    if (record.Status == "تحویل نشده")
+                    {
+                        <td>
+                            <input id="lndbtn" type="button" value="تحویل" onclick="location.href='@Url.Action("TakeBookFromMember","Library",new {bookId = record.BorrowedBook.Id ,recordId = record.Id, memberId=Model.Id})'">
+                        </td>
+                    }
+                  }
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model.BorrowedBooksHistory.Count == 0)
+{
+    <span id="emptymsg">تاریخچه خالی است</span>
+}

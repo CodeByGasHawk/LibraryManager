@@ -1,0 +1,73 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = LibraryManager
+build_property.RootNamespace = LibraryManager
+build_property.ProjectDir = C:\Users\Amir\Desktop\Code\C#\LibraryManager\LibraryManager-ASP.Net\Working\LibraryManager\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Amir\Desktop\Code\C#\LibraryManager\LibraryManager-ASP.Net\Working\LibraryManager
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Book/AddBook.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xBZGRCb29rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Book/PrintBooks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xQcmludEJvb2tzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Book/UpdateBook.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xVcGRhdGVCb29rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Library/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyeVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Library/LendBookToMember.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyeVxMZW5kQm9va1RvTWVtYmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Member/AddMember.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEFkZE1lbWJlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Member/MemberDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE1lbWJlckRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Member/PrintMembers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXFByaW50TWVtYmVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Member/UpdateMember.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXFVwZGF0ZU1lbWJlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Amir/Desktop/Code/C\#/LibraryManager/LibraryManager-ASP.Net/Working/LibraryManager/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-5y393ysejs

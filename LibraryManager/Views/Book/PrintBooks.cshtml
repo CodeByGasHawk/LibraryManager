@@ -1,0 +1,88 @@
+﻿@model List<Book>;
+@{int i = 1 ;}
+<style>
+    #updatemsg{margin:1px}
+    form{margin-top:2%}
+    #btn {margin-top:1%;width:140px;font-size:16px;}
+    .btn-outline-danger , .btn-outline-primary{font-weight:bold}
+    table{margin-top:5%;width:90%;text-align:right;margin-left:auto;margin-right:auto}
+    thead{color:red;border-bottom:solid;border-color:darkblue}
+    tr{border-bottom-width:thin}
+    #emptymsg{color:gray;font-weight:bold}
+</style>
+
+<span id="updatemsg">@TempData["UpdateBookMessage"]</span>
+
+<form asp-action="PrintBooks" method="post">
+    <div>
+        <label>عنوان کتاب : </label>
+        <input name="title"/>
+        <label>نویسنده : </label>
+        <input name="author"/>
+        <label>شابک : </label>
+        <input name="ISBN"/>
+        <button class="btn btn-success btn-sm" type="submit">جستجو</button>
+    </div>
+    <div>
+        <input id="btn" class="btn btn-outline-danger btn-sm" type="button" value="افزودن کتاب" onclick="location.href='@Url.Action("AddBook", "Book")'" />
+        <input id="btn" class="btn btn-outline-primary btn-sm" type="button" value="افزودن عضو" onclick="location.href='@Url.Action("AddMember", "Member")'" />
+        <input id="btn" class="btn btn-primary btn-sm" value="لیست اعضا" onclick="location.href='@Url.Action("PrintMembers", "Member")'" />
+        <input id="btn" class="btn btn-dark btn-sm" type="button" value="منوی اصلی" onclick="location.href='@Url.Action("Index", "Library")'" />
+    </div>
+</form>
+<table>
+    <colgroup>
+        <col span="1" style="width:7%"  />
+        <col span="1" style="width:30%" />
+        <col span="1" style="width:20%" />
+        <col span="1" style="width:20%" />
+        <col span="1" style="width:10%" />
+        <col span="1" style="width:10%" />
+    </colgroup>
+    <thead>
+        <tr>
+            <th>ردیف</th>
+            <th>عنوان کتاب</th>
+            <th>نویسنده</th>
+            <th>شابک</th>
+            <th>وضعیت</th>
+            <th>امانت گیرنده</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in @Model)
+        {
+            string color = book.IsAvailable == "موجود" ? "limegreen" : "red";
+            <tr>
+                @{<td>@i</td>;i++;}
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.ISBN</td>
+                <td style="color:@color">@book.IsAvailable</td>
+                    <td><a asp-controller="Member" asp-action="NationalCodeToId" asp-route-nationalCode="@book.Member">@book.Member</a></td>
+                @{
+                    if(book.IsAvailable=="موجود")
+                    {
+                        <td>
+                            <input id="lndbtn" type="button" value="واگذاری" onclick="location.href='@Url.Action("LendBookToMember","Library",new {ISBN = book.ISBN})'">
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="width:46px"></td>
+                    }                   
+                }
+                <td>
+                    <input id="edtbtn" type="button" value="تغییر" onclick="location.href='@Url.Action("UpdateBook","Book",new {id = book.Id})'">
+                </td>
+                <td>
+                    <input id="delbtn" type="button" value="حذف" onclick="location.href='@Url.Action("DeleteBook","Book",new {id = book.Id})'">
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model.Count == 0)
+{
+     <span id="emptymsg">کتاب یافت نشد</span>
+}

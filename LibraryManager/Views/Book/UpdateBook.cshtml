@@ -1,0 +1,55 @@
+﻿@model Book;
+<style type="text/css">
+    form{margin-right:35%;margin-top:2%}
+    #lcl{text-align:left}
+    #rcl{text-align:right;color:red;font-size:medium}
+    #lstbtn{width:90px}
+    #btn{width:70px}
+    #msg{margin:1px}
+</style>
+<span id="msg">
+    @ViewBag.UpdateBookMessage
+</span>
+<form asp-action="UpdateBook" method="post" asp-route-bookId="@TempData.Peek("bookId")">
+    <table>
+        <tr>
+            <td id="lcl">
+                <label >عنوان کتاب : </label>
+            </td>
+            <td>
+                <input asp-for="Title"/>
+            </td>
+            <td id="rcl">
+                <span asp-validation-for="Title"></span>
+            </td>
+        </tr>
+        <tr>
+            <td id="lcl">
+                <label>نویسنده : </label>
+            </td>
+            <td>
+                <input asp-for="Author"/>
+            </td>
+            <td id="rcl">
+                <span asp-validation-for="Author"></span>
+            </td>
+        </tr>
+        <tr>
+            <td id="lcl">
+                <label>شابک : </label>
+            </td>
+            <td>
+                <input asp-for="ISBN"/>
+            </td>
+            <td id="rcl">
+                <span asp-validation-for="ISBN"></span>
+            </td>
+        </tr>
+        <tr>
+            <td id="lcl" colspan="2">
+                <button id="btn" type="submit" class="btn btn-sm btn-success">ثبت</button>
+                <input id="lstbtn" class="btn btn-sm btn-danger"  type="button" value="بازگشت به لیست" onclick="location.href='@Url.Action("PrintBooks", "Book")'" />
+            </td>
+        </tr>
+    </table>   
+</form>

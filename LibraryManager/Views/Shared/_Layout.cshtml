@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LibraryManager</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LibraryManager.styles.css" asp-append-version="true" />
+    <style>
+        body {
+        margin-bottom: 60px;
+        background-color: black;
+        font-family: 'Adobe Arabic';
+        font-size: large;
+        text-align: center;
+        }
+        main{
+            margin:15%;
+            margin-top:5%;
+            margin-bottom:5%;
+            padding-bottom:5%;
+            padding-top:3%;
+            background-color:white;
+            border:ridge
+        }
+        .input-validation-error {
+            border: 1px solid Red;
+            border-radius:3px;
+            background-color: #fee;
+        }
+        input {
+            border: 1px solid black;
+            border-radius: 3px;
+        }
+        .btn-success{
+            border: 1px solid black;
+        }
+        #delbtn{
+            border: 1px solid black;
+            border-radius : 3px;
+            font-size:medium;
+            margin:1px;
+            background-color:indianred;
+            color:black;
+        }
+        #edtbtn{
+            border: 1px solid black;
+            border-radius : 3px;
+            font-size:medium;
+            margin:1px;
+            background-color:cornflowerblue;
+            color:black;
+        }
+        #lndbtn{
+            border: 1px solid black;
+            border-radius : 3px;
+            font-size:medium;
+            margin:1px;
+            background-color:yellowgreen;
+            color:black;
+            width:46px;
+        }
+        #dtlbtn{
+            border: 1px solid black;
+            border-radius : 3px;
+            font-size:medium;
+            margin:1px;
+            background-color:#0DCAF0;
+            color:black;
+        }
+        .btn-sm{
+            font-size:medium;
+        }
+        
+    </style>
+</head>
+<body >
+    <header>   
+    </header>
+        <main dir="rtl">
+            @RenderBody()
+        </main>
+    <footer>
+    </footer>
+
+</body>
+</html>

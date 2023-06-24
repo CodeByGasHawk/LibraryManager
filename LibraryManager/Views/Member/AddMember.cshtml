@@ -1,0 +1,63 @@
+﻿@model Member;
+<style type="text/css">
+    form{margin-right:35%;margin-top:2%}
+    #lcl{text-align:left}
+    #rcl{text-align:right;color:red;font-size:medium}
+    #btn{width:80px}
+    #msg{margin:1px}
+</style>
+
+<span id="msg">
+    @ViewBag.AddMemberMessage
+</span>
+
+<form asp-action="AddMember" method="post">
+    <table>
+        <tr>
+            <td id="lcl">
+                <label >نام : </label>
+            </td>
+            <td>
+                <input asp-for="FirstName"/>
+            </td>
+            <td id="rcl">
+                <span asp-validation-for="FirstName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td id="lcl">
+                <label>نام خانوادگی : </label>
+            </td>
+            <td>
+                <input asp-for="LastName"/>
+            </td>
+            <td id="rcl">
+                <span asp-validation-for="LastName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td id="lcl">
+                <label>کد ملی : </label>
+            </td>
+            <td>
+                <input asp-for="NationalCode"/>
+            </td>
+            <td id="rcl">
+                <span asp-validation-for="NationalCode"></span>
+            </td>
+        </tr>
+        <tr>
+            <td id="lcl" colspan="2">
+                <button id="btn" type="submit" class="btn btn-sm btn-success">افزودن</button>
+                <input id="btn" class="btn btn-dark btn-sm" type="button"  value="منوی اصلی" onclick="location.href='@Url.Action("index", "Library")'" />
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:left">                
+                <input id="btn" class="btn btn-sm btn-danger"  type="button" value="لیست کتاب ها" onclick="location.href='@Url.Action("PrintBooks", "Book")'" />
+                <input id="btn" class="btn btn-primary btn-sm" type="button" value="لیست اعضا" onclick="location.href='@Url.Action("PrintMembers", "Member")'" />
+            </td>
+        </tr>
+    </table>        
+</form>

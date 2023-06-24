@@ -1,0 +1,33 @@
+﻿<style>
+    main{
+        margin:30%;
+        margin-top:5%;
+        margin-bottom:5%;
+        background-image: url(background.jpg);
+        background-repeat:repeat;
+        background-size:100%;
+    }
+    .btn{width:180px;margin:1px;font-weight:bold;font-size:larger}
+    h4{font-family:'W_titr arabi Flower';color:dimgray}
+    h6{font-family:W_tanin;line-height:1.75;margin:20px;color:gray;}
+</style>
+<h4>به نرم افزار مدیریت کتابخانه خوش آمدید</h4>
+<h6>امروز @TempData["Date"]<br />ساعت @TempData["Time"]</h6>
+<div style="margin-top:2%">
+    <input class="btn btn-outline-danger" type="button" value="افزودن کتاب" onclick="location.href='@Url.Action("AddBook", "Book")'" />
+</div>
+<div>
+    <input class="btn btn-outline-primary" type="button" value="افزودن عضو" onclick="location.href='@Url.Action("AddMember", "Member")'" />
+</div>
+<div>
+    <input class="btn btn-danger" type="button" value="لیست کتاب ها" onclick="location.href='@Url.Action("PrintBooks", "Book")'" />
+</div>
+<div>
+    <input class="btn btn-primary" type="button" value="لیست اعضا" onclick="location.href='@Url.Action("PrintMembers", "Member")'" />
+</div>
+<div>
+    <input class="btn btn-secondary" type="button" value="واگذاری کتاب" onclick="location.href='@Url.Action("LendBookToMember", "Library")'" />
+</div> 
+
+
+

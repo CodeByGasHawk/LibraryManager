@@ -1,0 +1,127 @@
+﻿@model Member;
+@{
+    Model.BorrowedBooksHistory.Reverse();
+    var borrowedBooks = Model.BorrowedBooksHistory;
+    int i = 1;
+}
+<style>
+    #firstform{margin-top:2%}
+    #btns{width:55px;height:30px}
+    #secondform{margin-top:10px}
+    #formlabel{font-weight:bold;color:darkblue}
+    #updatemsg{margin:1px;color:red}
+    #btn {margin-top:1%;width:140px;font-size:16px;}
+    .btn-outline-danger , .btn-outline-primary{font-weight:bold}
+    table{margin-top:5%;width:90%;text-align:right;margin-left:auto;margin-right:auto}
+    thead{color:red;border-bottom:solid;border-color:darkblue}
+    tr{border-bottom-width:thin}
+    #histrow{color:gray;border:none}
+    #edt{background-color:cornflowerblue}
+    #lndmsg{margin:1px}
+    #emptymsg{color:gray;font-weight:bold}
+    #lndbtn{background-color:#d7fc8b;border-color:#d7fc8b}
+</style>
+
+<form id="firstform" asp-action="UpdateMember" asp-route-memberNationalCode="@TempData.Peek("memberId")">
+    <div style="display:inline-block">
+        <div>
+                <span id="updatemsg" asp-validation-for="FirstName"></span>
+        </div>
+        <label>نام : </label>
+        <input value="@Model.FirstName" asp-for="FirstName" style="border-width:thin;background-color:white;border-radius:3px"/>    
+    </div>
+    <div style="display:inline-block">
+        <div>
+                <span id="updatemsg" style="padding-right:25%" asp-validation-for="LastName"></span>
+        </div>
+        <label>نام خانوادگی : </label>
+        <input value="@Model.LastName" asp-for="LastName" style="border-width:thin;background-color:white;border-radius:3px"/>    
+    </div>
+    <div style="display:inline-block">
+        <div>
+                <span id="updatemsg" style="padding-right:15%" asp-validation-for="NationalCode"></span>
+        </div>
+        <label>کدملی : </label>
+        <input value="@Model.NationalCode" asp-for="NationalCode" style="border-width:thin;background-color:white;border-radius:3px"/>  
+    </div style="display:inline-block">
+    <button id="btns" class="btn btn-sm btn-success" type="submit">ثبت</button>
+    <input id="btns" class="btn btn-sm btn-dark" type="button" value="بازگشت" onclick="location.href='@Url.Action("MemberDetails", "Member",new {id = Model.Id})'" />
+</form>
+
+<div>
+    <input id="btn" class="btn btn-outline-danger btn-sm" type="button" value="افزودن کتاب" disabled />
+    <input id="btn" class="btn btn-outline-primary btn-sm" type="button" value="افزودن عضو" disabled />
+    <input id="btn" class="btn btn-danger btn-sm" value="لیست کتاب ها" disabled />
+    <input id="btn" class="btn btn-primary btn-sm" value="لیست اعضا" disabled />
+    <input id="btn" class="btn btn-dark btn-sm" type="button" value="منوی اصلی" disabled />
+</div>
+
+<form id="secondform" asp-controller="Library" asp-action="LendBookToMemberFromProfile" asp-route-memberId="@Model.Id" method="post">
+    <label id="formlabel">واگذاری کتاب : </label>
+    <input placeholder="شابک را وارد کنید" name="ISBN" disabled/>
+    <button type="submit" class="btn btn-success btn-sm" disabled>تایید</button>
+</form>
+
+<span id="lndmsg"></span>
+
+<span style="color:red">
+    @ViewBag.UpdateMemberMessage
+</span>
+
+<table>
+    <colgroup>
+        <col span="1" style="width:7%"  />
+        <col span="1" style="width:25%" />
+        <col span="1" style="width:20%" />
+        <col span="1" style="width:12%" />
+        <col span="1" style="width:15%" />
+        <col span="1" style="width:15%" />        
+    </colgroup>
+    <thead>
+        <tr id="histrow">
+           <th colspan="2" style="">تاریخچه دریافت کتاب :</th>
+        </tr>
+        <tr>
+            <th>ردیف</th>
+            <th>عنوان کتاب</th>
+            <th>نویسنده</th>
+            <th>تاریخ دریافت</th>
+            <th>تاریخ تحویل</th>
+            <th>وضعیت</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in borrowedBooks)
+        {
+            <tr>
+            @{
+                <td>@i</td>
+                ; i++;
+            }
+                <td>@record.BorrowedBook.Title</td>
+                <td>@record.BorrowedBook.Author</td>
+                <td>@DateOnly.FromDateTime(record.TakeDate)</td>
+                <td>@DateOnly.FromDateTime(record.ReturnDate)</td>
+            @{
+                string color = record.Status == "تحویل شده" ? "limegreen" : "red";
+                        <td style="color:@color">@record.Status</td>
+            }
+            @{
+                if (record.Status == "تحویل نشده")
+                {
+                    <td>
+                        <input id="lndbtn" type="button" value="تحویل" disabled>
+                    </td>
+                }
+            }
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model.BorrowedBooksHistory.Count == 0)
+{
+    <span id="emptymsg">تاریخچه خالی است</span>
+}
+
+
+
